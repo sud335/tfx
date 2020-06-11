@@ -1,6 +1,7 @@
 # Current Version(Still in Development)
 
 ## Major Features and Improvements
+*   Use TFXIO and batched extractors by default in Evaluator.
 
 ## Bug fixes and other changes
 
