@@ -19,13 +19,11 @@ from __future__ import division
 from __future__ import print_function
 
 import os
-from typing import Text, Optional
+from typing import Text
 
 import click
 
-from tfx import version
 from tfx.tools.cli.container_builder import labels
-
 
 _DEFAULT_DOCKERFILE_CONTENT_WITH_SETUP_PY = '''FROM %s
 WORKDIR /pipeline
@@ -49,20 +47,12 @@ class Dockerfile(object):
   """
 
   def __init__(self,
-               filename: Text,
-               setup_py_filename: Optional[Text] = None,
-               base_image: Optional[Text] = None):
+               filename: Text = labels.DOCKERFILE_NAME,
+               setup_py_filename: Text = labels.SETUP_PY_FILENAME,
+               base_image: Text = labels.BASE_IMAGE):
     self.filename = filename
     if os.path.exists(self.filename):
       return
-
-    if base_image is None and version.__version__.endswith('.dev'):
-      raise ValueError('Cannot find a base image automatically in development /'
-                       ' nightly version. Please specify a base image using'
-                       ' --build-base-image flag.')
-
-    base_image = base_image or labels.BASE_IMAGE
-    setup_py_filename = setup_py_filename or labels.SETUP_PY_FILENAME
     if os.path.exists(setup_py_filename):
       click.echo('Generating Dockerfile with python package installation '
                  'based on %s.' % setup_py_filename)

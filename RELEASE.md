@@ -44,7 +44,6 @@
 *   Added custom config to Transform component and made it available to
     pre-processing fn.
 *   Supported custom extractors in Evaluator.
-*   Deprecated tensorflow dependency from MLMD python client.
 
 ## Bug fixes and other changes
 *   Added Tuner component to Iris e2e example.
