@@ -2,9 +2,6 @@
 
 ## Major Features and Improvements
 
-*   Added experimental work-in-progress KubernetesDagRunner for orchestrating
-    TFX pipelines directly on a Kubernetes cluster.
-
 ## Bug fixes and other changes
 
 ## Breaking changes
